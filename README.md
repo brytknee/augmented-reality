@@ -2,16 +2,9 @@
 <!-- @defgroup subtheme_sass -->
 <!-- @ingroup subtheme -->
 
-# Fire framework (Fork of [Bootstrap SASS Starterkit])
+# Fire theme (Fork of [Bootstrap SASS Starterkit])
 
-Below are instructions on how to create a Bootstrap sub-theme using a SASS preprocessor.
-
-## Requirements
-This starter theme assumes that you have:
-- Bootstrap in your themes folder (This is based off of this theme)
-- Jquery 1.9.1 or higher
-- NPM (Node Package Manager) (NPM Version 2.x or greater)
-
+Below are instructions on how to create a Bootstrap site using a SASS preprocessor.
 
 ## Setup
 Download this project into your `sites/all/themes/fire` folder of your Drupal installation.
