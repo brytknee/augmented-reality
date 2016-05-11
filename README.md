@@ -2,7 +2,7 @@
 <!-- @defgroup subtheme_sass -->
 <!-- @ingroup subtheme -->
 
-# Fire theme (Fork of [Bootstrap SASS Starterkit])
+# Fire framework
 
 Below are instructions on how to create a Bootstrap site using a SASS preprocessor.
 
