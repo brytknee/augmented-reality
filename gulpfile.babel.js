@@ -12,7 +12,7 @@ import del from 'del';
 import gulpif from 'gulp-if';
 import yargs from 'yargs';
 
-const argv = yargs.argv;	
+const argv = yargs.argv;
 
 const config = {
 	html: {
@@ -31,9 +31,17 @@ const config = {
 		],
 		destination: './dist'
 	},
+	media: {
+		source: './src/media/**/*.{png,jpg,gif}',
+		destination: './dist/media'
+	},
+	fonts: {
+		source: './src/fonts/**/*',
+		destination: './dist/fonts'
+	},
 	extras: {
 		source: './src/**/*.{htaccess}',
-		destination: './dist'
+		destination: './dist/'
 	},
 	browserSync: {
 		port: 5000,
@@ -65,28 +73,41 @@ export function scripts() {
 		.pipe(gulpif(!argv.prod, sourcemaps.write('.')))
 		.pipe(gulp.dest(config.scripts.destination));
 }
-	
+
 export function html() {
 	return gulp.src(config.html.source)
 		.pipe(plumber())
 		.pipe(gulp.dest(config.html.destination));
 }
-	
+
+export function media() {
+	return gulp.src(config.media.source)
+		.pipe(plumber())
+		.pipe(gulp.dest(config.media.destination));
+}
+
+export function fonts() {
+	return gulp.src(config.fonts.source)
+		.pipe(plumber())
+		.pipe(gulp.dest(config.fonts.destination));
+}
+
 export function extras() {
 	return gulp.src(config.extras.source)
 		.pipe(plumber())
 		.pipe(gulp.dest(config.extras.destination));
 }
-	
+
 export function serve() {
 	browserSync.init(config.browserSync);
-
 	gulp.watch(config.html.source, html);
 	gulp.watch(config.styles.source, styles);
 	gulp.watch(config.scripts.source, scripts);
+	gulp.watch(config.media.source, media);
+	gulp.watch(config.fonts.source, fonts);
 }
 
 export const clean = () => del(['dist']);
 
-const tasks = gulp.parallel(styles, scripts, html, extras);
+const tasks = gulp.parallel(styles, scripts, html, media, fonts, extras);
 export const build = gulp.series(clean, tasks);
