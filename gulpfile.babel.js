@@ -12,7 +12,7 @@ import del from 'del';
 import gulpif from 'gulp-if';
 import yargs from 'yargs';
 
-const argv = yargs.argv;
+const argv = yargs.argv;	
 
 const config = {
 	html: {
@@ -25,7 +25,10 @@ const config = {
 		browsers: ['last 2 versions', 'ie >= 9']
 	},
 	scripts: {
-		source: './src/scripts/**/*.js',
+		source: [
+			'./src/scripts/google-analytics.js',
+			'./src/scripts/global.js'
+		],
 		destination: './dist'
 	},
 	extras: {
