@@ -1,34 +1,33 @@
 {
-  "name": "bootstrap_starter_theme",
+  "name": "flat-starterkit",
   "version": "1.0.0",
-  "description": "A starter theme for Drupal",
-  "main": "index.js",
-  "dependencies": {
-    "bootstrap-sass": "^3.3.6"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.6.5",
-    "grunt": "^0.4.5",
-    "grunt-browser-sync": "^2.2.0",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-copy": "^0.8.2",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-php": "^1.5.1",
-    "grunt-sass": "^1.1.0",
-    "grunt-sass-directory-import": "^0.1.3",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-sass": "^2.0.4",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-watch": "^4.3.3"
-  },
+  "description": "A starter-kit for building simple websites and landing pages.",
+  "main": "webpack.config.js",
   "scripts": {
-    "postinstall": "find node_modules/ -name '*.info' -type f -delete"
+    "debug": "gulp build ; gulp serve",
+    "build": "gulp build --prod"
   },
-  "author": "Wesley Render",
+  "author": "SKYCATCHFIRE",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://git.drupal.org/sandbox/wrender/2627564.git"
+    "url": "https://github.com/skycatchfire/flat-starterkit"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-if": "^2.0.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "yargs": "^10.0.3"
   }
 }
