@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "debug": "gulp build ; gulp serve",
-    "build": "gulp build --prod"
+    "build": "gulp build --prod",
+    "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "author": "SKYCATCHFIRE",
   "license": "MIT",
