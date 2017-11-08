@@ -1,52 +1,46 @@
-# Fire framework
+# flat-starterkit
 
-Below are instructions on how to create a Bootstrap site using a SASS preprocessor.
+Creates a simple one page website or landing page. The starterkit includes Sass and ES6 compilation, as well as Browsersync for a local server and hot-reloading.
 
-## Setup
-- Clone the repo and navigate via Terminal to that folder
-- Run `npm install`
+## Installing / Getting started
 
-If you do not have npm, follow these instructions. If you do, continue to next section:
+This is the bare minimum to get the project running in development mode. For a more detailed explanation, [see below](#development).
 
-- Run `brew`. If command is not found, you need to install Brew
-`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+```shell
+npm install
+npm run debug
+```
 
-- Install npm
-`brew install node`
+The first command will install all the necessary dependencies for the project. The second command will build your project to the `./dist` directory and display it in the browser in development mode.
 
-- Install grunt
-`npm install -g grunt-cli`
+## Development
 
-## Workflow
+### Prerequisites
 
-Next run `grunt init` to copy the bootstrap files and compile SASS for the first time into the css folder.
+- [Node.js](https://nodejs.org/en/) - v7.6.0+
 
-You can now edit the files in the /sass folder to make changes. Start by reviewing and editing variables in the `/assets/sass/base/_variable-overrides.scss` file.
+### Setup
 
-## Getting Started
-Run `grunt browsersync` to begin development. This will load up the `index.html` file in your browser and you'll begin to see your changes made live.
+```shell
+cd to/target/directory
+git clone https://github.com/skycatchfire/flat-starterkit.git .
+npm install
+```
 
-Alternatively, after you've run the initial `grunt init` you can then use `grunt watch` to continuously watch the sass folder for changes, or you can run `grunt sass` to just do a single run and compile the sass.
+### Running Local Server
 
-## Overriding styles
-The `/assets/sass/base/_variable-overrides.scss` file is generally where you will
-the majority of your time overriding the variables provided by the [Bootstrap
-Framework].
+Spin up a local development server with Browsersync.
 
-The `/assets/sass/_bootstrap.scss` file is nearly an exact copy from the
-[Bootstrap Framework Source Files]. The only difference is that it injects the
-`_variable-overrides.scss` file directly before it has imported the[Bootstrap
-Framework]'s `_variables.scss` file. This allows you to easily override variables
-without having to constantly keep up with newer or missing variables during an
-upgrade.
+```shell
+npm run debug
+```
 
-The `/assets/sass/style.scss` file is the glue that combines the
-`_bootstrap.sass` and `_overrides.scss` files together.
+## Deployment
 
-## Adding styles
-Creating a partial in any of the `styles` subfolders will automatically add that partial to the main `styles.css` file. It is recommended that you create small, focused .scss files for each component, section, and page of the site. This makes the site more modular and easy to maintain.
+Using NPM scripts, the website can be deployed to GitHub Pages:
 
+```shell
+npm run deploy
+```
 
-[Bootstrap Framework]: http://getbootstrap.com
-[Bootstrap Framework Source Files]: https://github.com/twbs/bootstrap/releases
-[SASS]: http://sass-lang.com/
+This will push the current `dist` directory to the gh-pages branch.
