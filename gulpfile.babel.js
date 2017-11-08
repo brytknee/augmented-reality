@@ -44,7 +44,7 @@ const config = {
 		destination: './dist/fonts'
 	},
 	extras: {
-		source: './src/**/*.{htaccess}',
+		source: './src/*.{xml,txt}',
 		destination: './dist/'
 	},
 	browserSync: {
