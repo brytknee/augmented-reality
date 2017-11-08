@@ -8,6 +8,7 @@ import autoprefixer from 'gulp-autoprefixer';
 import sourcemaps from 'gulp-sourcemaps';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
+import htmlmin from 'gulp-htmlmin';
 import del from 'del';
 import gulpif from 'gulp-if';
 import yargs from 'yargs';
@@ -79,6 +80,10 @@ export function scripts() {
 export function html() {
 	return gulp.src(config.html.source)
 		.pipe(plumber())
+		.pipe(gulpif(argv.prod, htmlmin({
+			collapseWhitespace: true,
+			removeComments: true
+		})))
 		.pipe(gulp.dest(config.html.destination))
 		.pipe(browserSync.stream());
 }
