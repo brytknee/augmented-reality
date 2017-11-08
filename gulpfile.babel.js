@@ -30,6 +30,9 @@ const config = {
 			'./src/scripts/google-analytics.js',
 			'./src/scripts/global.js'
 		],
+		modules: [
+		'node_modules/jquery/dist/jquery.js'
+		],
 		destination: './dist'
 	},
 	media: {
@@ -76,6 +79,15 @@ export function scripts() {
 		.pipe(gulp.dest(config.scripts.destination))
 		.pipe(browserSync.stream());
 }
+	
+export function modules() {
+	return gulp.src(config.scripts.modules)
+		.pipe(plumber())
+		.pipe(gulpif(argv.prod, uglify()))
+		.pipe(concat('vendor.js'))
+		.pipe(gulp.dest(config.scripts.destination))
+		.pipe(browserSync.stream());
+}
 
 export function html() {
 	return gulp.src(config.html.source)
@@ -114,11 +126,12 @@ export function serve() {
 	gulp.watch(config.html.source, html);
 	gulp.watch(config.styles.source, styles);
 	gulp.watch(config.scripts.source, scripts);
+	gulp.watch(config.scripts.modules, modules);
 	gulp.watch(config.media.source, media);
 	gulp.watch(config.fonts.source, fonts);
 }
 
 export const clean = () => del(['dist']);
 
-const tasks = gulp.parallel(styles, scripts, html, media, fonts, extras);
+const tasks = gulp.parallel(styles, scripts, modules, html, media, fonts, extras);
 export const build = gulp.series(clean, tasks);
