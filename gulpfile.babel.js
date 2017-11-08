@@ -60,7 +60,8 @@ export function styles() {
 		.pipe(gulpif(argv.prod, cssnano()))
 		.pipe(concat('bundle.css'))
 		.pipe(gulpif(!argv.prod, sourcemaps.write('.')))
-		.pipe(gulp.dest(config.styles.destination));
+		.pipe(gulp.dest(config.styles.destination))
+		.pipe(browserSync.stream());
 }
 
 export function scripts() {
@@ -71,31 +72,36 @@ export function scripts() {
 		.pipe(gulpif(argv.prod, uglify()))
 		.pipe(concat('bundle.js'))
 		.pipe(gulpif(!argv.prod, sourcemaps.write('.')))
-		.pipe(gulp.dest(config.scripts.destination));
+		.pipe(gulp.dest(config.scripts.destination))
+		.pipe(browserSync.stream());
 }
 
 export function html() {
 	return gulp.src(config.html.source)
 		.pipe(plumber())
-		.pipe(gulp.dest(config.html.destination));
+		.pipe(gulp.dest(config.html.destination))
+		.pipe(browserSync.stream());
 }
 
 export function media() {
 	return gulp.src(config.media.source)
 		.pipe(plumber())
-		.pipe(gulp.dest(config.media.destination));
+		.pipe(gulp.dest(config.media.destination))
+		.pipe(browserSync.stream());
 }
 
 export function fonts() {
 	return gulp.src(config.fonts.source)
 		.pipe(plumber())
-		.pipe(gulp.dest(config.fonts.destination));
+		.pipe(gulp.dest(config.fonts.destination))
+		.pipe(browserSync.stream());
 }
 
 export function extras() {
 	return gulp.src(config.extras.source)
 		.pipe(plumber())
-		.pipe(gulp.dest(config.extras.destination));
+		.pipe(gulp.dest(config.extras.destination))
+		.pipe(browserSync.stream());
 }
 
 export function serve() {
