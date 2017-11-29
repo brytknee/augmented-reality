@@ -49,7 +49,7 @@ const config = {
 	},
 	browserSync: {
 		port: 5000,
-		server: './dist'
+		server: './'
 	}
 };
 
