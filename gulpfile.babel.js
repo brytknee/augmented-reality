@@ -16,41 +16,47 @@ import yargs from 'yargs';
 const argv = yargs.argv;
 
 const config = {
-	html: {
-		source: './src/**/*.html',
-		destination: './dist'
-	},
-	styles: {
-		source: './src/styles/**/*.scss',
-		destination: './dist',
-		browsers: ['last 2 versions', 'ie >= 9']
-	},
-	scripts: {
-		source: [
-			'./src/scripts/google-analytics.js',
-			'./src/scripts/global.js'
-		],
-		modules: [
-		'node_modules/jquery/dist/jquery.js'
-		],
-		destination: './dist'
-	},
-	media: {
-		source: './src/media/**/*.{png,jpg,gif}',
-		destination: './dist/media'
-	},
-	fonts: {
-		source: './src/fonts/**/*',
-		destination: './dist/fonts'
-	},
-	extras: {
-		source: './src/*.{xml,txt}',
-		destination: './dist/'
-	},
-	browserSync: {
-		port: 5000,
-		server: './'
-	}
+  html: {
+    source: "./src/**/*.html",
+    destination: "./dist"
+  },
+  styles: {
+    source: "./src/styles/**/*.scss",
+    destination: "./dist",
+    browsers: ["last 2 versions", "ie >= 9"]
+  },
+  scripts: {
+    source: [
+      "./src/scripts/google-analytics.js",
+      "./src/scripts/global.js"
+    ],
+    modules: [
+      "node_modules/jquery/dist/jquery.js",
+      "./src/scripts/three.min.js",
+      "./src/scripts/inflate.min.js",
+      "./src/scripts/fbxLoader.js",
+      "./src/scripts/OrbitControls.js",
+      "./src/scripts/Detector.js",
+      "./src/scripts/stats.min.js"
+    ],
+    destination: "./dist"
+  },
+  media: {
+    source: "./src/media/**/*.{png,jpg,gif}",
+    destination: "./dist/media"
+  },
+  fonts: {
+    source: "./src/fonts/**/*",
+    destination: "./dist/fonts"
+  },
+  extras: {
+    source: "./src/*.{xml,txt}",
+    destination: "./dist/"
+  },
+  browserSync: {
+    port: 5000,
+    server: "./"
+  }
 };
 
 export function styles() {
@@ -79,7 +85,7 @@ export function scripts() {
 		.pipe(gulp.dest(config.scripts.destination))
 		.pipe(browserSync.stream());
 }
-	
+
 export function modules() {
 	return gulp.src(config.scripts.modules)
 		.pipe(plumber())
