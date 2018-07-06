@@ -2,11 +2,8 @@
 
 Three.js animation. Working on getting AR for mobile within the browser. 
 
-## Installing / Getting started
+## Finished Product
 
-```shell
-npm install
-npm run debug
-```
+https://brytknee.github.io/augmented-reality/
 
 
